@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
+import useDebounce from '../hooks/useDebounce';
 
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(onSearch, 3000);
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
+  const onChangeHandler = (e) => {
+    setSearchTerm(e.target.value);
+    debouncedSearch(e.target.value);
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSearch(searchTerm);
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' value={searchTerm} onChange={handleChange} />
-      <button type='submit'>Search</button>
-    </form>
-  );
+  return <input type='text' value={searchTerm} onChange={onChangeHandler} />;
 }
 
 export default SearchBar;

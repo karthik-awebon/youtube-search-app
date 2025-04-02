@@ -30,7 +30,7 @@ function App() {
     setIsLoading(true);
     setVideos([]);
     try {
-      const { items, nextPageToken: token } = await searchVideos(query);
+      const { items, nextPageToken: token } = await searchVideos(searchQuery);
       setVideos(items);
       setNextPageToken(token);
     } catch (error) {
