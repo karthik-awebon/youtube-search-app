@@ -7,12 +7,15 @@ import './App.css';
 function App() {
   const [videos, setVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState('');
+  const [nextPageToken, setNextPageToken] = useState(null);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const { items } = await getVideos();
+        const { items, nextPageToken: token } = await getVideos();
         setVideos(items);
+        setNextPageToken(token);
       } catch (error) {
         console.error('Error fetching videos:', error);
       }
@@ -23,17 +26,36 @@ function App() {
 
   const handleSearch = useCallback(async (searchQuery) => {
     if (!searchQuery) return;
+    setQuery(searchQuery);
     setIsLoading(true);
     setVideos([]);
     try {
-      const { items } = await searchVideos(searchQuery);
+      const { items, nextPageToken: token } = await searchVideos(query);
       setVideos(items);
+      setNextPageToken(token);
     } catch (error) {
       console.error('Error searching videos:', error);
     } finally {
       setIsLoading(false);
     }
   }, []);
+
+  const handleLoadMore = useCallback(async () => {
+    if (!nextPageToken || isLoading) return;
+    setIsLoading(true);
+    try {
+      const { items, nextPageToken: token } =
+        query !== ''
+          ? await searchVideos(query, nextPageToken)
+          : await getVideos(query, nextPageToken);
+      setVideos((prevVideos) => [...prevVideos, ...items]);
+      setNextPageToken(token);
+    } catch (error) {
+      console.error('Error loading more videos:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [query, nextPageToken, isLoading]);
 
   return (
     <div class='container'>
@@ -49,7 +71,11 @@ function App() {
       <hr />
       <div>
         <SearchBar onSearch={handleSearch} />
-        <VideoList videos={videos} isLoading={isLoading} />
+        <VideoList
+          videos={videos}
+          isLoading={isLoading}
+          onLoadMore={handleLoadMore}
+        />
       </div>
     </div>
   );
