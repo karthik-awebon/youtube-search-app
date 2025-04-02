@@ -1,5 +1,5 @@
-const API_KEY = 'AIzaSyB95x_Pn5BrucVxNOulWeX9Tim5fTX1Ang';
-const BASE_URL = 'https://www.googleapis.com/youtube/v3';
+const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export async function searchVideos(query, pageToken = '') {
   const url = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(
