@@ -1,12 +1,25 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
-import { searchVideos } from './services/youtubeApi';
+import { searchVideos, getVideos } from './services/youtubeApi';
 import './App.css';
 
 function App() {
   const [videos, setVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const { items } = await getVideos();
+        setVideos(items);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
+
+    fetchVideos();
+  }, []);
 
   const handleSearch = useCallback(async (searchQuery) => {
     if (!searchQuery) return;
