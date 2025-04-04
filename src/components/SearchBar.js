@@ -26,6 +26,7 @@ function SearchBar({ onSearch }) {
       <input
         type='text'
         className={styles.searchInput}
+        placeholder='Search for videos...'
         value={searchTerm}
         onChange={onChangeHandler}
       />
