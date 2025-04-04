@@ -29,6 +29,7 @@ function SearchBar({ onSearch }) {
         placeholder='Search for videos...'
         value={searchTerm}
         onChange={onChangeHandler}
+        data-testid='search-bar'
       />
     </div>
   );
