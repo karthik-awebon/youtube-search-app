@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useDebounce from '../hooks/useDebounce';
+import styles from './SearchBar.module.css';
 
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -9,7 +10,27 @@ function SearchBar({ onSearch }) {
     setSearchTerm(e.target.value);
     debouncedSearch(e.target.value);
   };
-  return <input type='text' value={searchTerm} onChange={onChangeHandler} />;
+  return (
+    <div className={styles.searchWrapper}>
+      <svg
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+      >
+        <circle cx='11' cy='11' r='8' />
+        <line x1='21' y1='21' x2='16.65' y2='16.65' />
+      </svg>
+      <input
+        type='text'
+        className={styles.searchInput}
+        value={searchTerm}
+        onChange={onChangeHandler}
+      />
+    </div>
+  );
 }
 
 export default SearchBar;

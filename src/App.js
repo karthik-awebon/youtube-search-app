@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
 import { searchVideos, getVideos } from './services/youtubeApi';
-import './App.css';
+import styles from './App.module.css';
 
 function App() {
   const [videos, setVideos] = useState([]);
@@ -58,17 +58,8 @@ function App() {
   }, [query, nextPageToken, isLoading]);
 
   return (
-    <div class='container'>
-      <h1>
-        <a href='http://codecanyon.net/item/youtube-api-ultimate-integration/403773?ref=yougapi'></a>
-        <img
-          src='include/graph/youtube-integration-mini.png'
-          style={{ marginRight: '30px' }}
-          alt='image'
-        />
-        YouTube Search and API integration
-      </h1>
-      <hr />
+    <div className={styles.container}>
+      <h1>YouTube Search</h1>
       <div>
         <SearchBar onSearch={handleSearch} />
         <VideoList

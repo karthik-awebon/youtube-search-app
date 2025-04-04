@@ -1,0 +1,22 @@
+.searchWrapper {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #f5f5f5;
+}
+
+.searchWrapper svg {
+    margin-right: 0.5rem;
+}
+
+.searchWrapper input {
+    border: none;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 1rem;
+}
+
+.searchWrapper input:focus {
+    outline: none;
+}
