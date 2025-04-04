@@ -3,9 +3,9 @@ import VideoItem from './VideoItem';
 import Loader from './Loader';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 
-function VideoList({ videos, onLoadMore, isLoading }) {
+function VideoList({ videos, onLoadMore, isLoading, error }) {
   useInfiniteScroll(onLoadMore);
-  if (videos.length === 0 && !isLoading) {
+  if (videos.length === 0 && !isLoading && !error) {
     return <p>No videos found.</p>;
   }
 

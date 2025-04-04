@@ -9,15 +9,18 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [nextPageToken, setNextPageToken] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
+        setError(null);
         const { items, nextPageToken: token } = await getVideos();
         setVideos(items);
         setNextPageToken(token);
       } catch (error) {
         console.error('Error fetching videos:', error);
+        setError('Sorry, there was an error fetching videos.');
       }
     };
 
@@ -29,12 +32,14 @@ function App() {
     setQuery(searchQuery);
     setIsLoading(true);
     setVideos([]);
+    setError(null);
     try {
       const { items, nextPageToken: token } = await searchVideos(searchQuery);
       setVideos(items);
       setNextPageToken(token);
     } catch (error) {
       console.error('Error searching videos:', error);
+      setError('Sorry, there was an error searching for videos.');
     } finally {
       setIsLoading(false);
     }
@@ -43,6 +48,7 @@ function App() {
   const handleLoadMore = useCallback(async () => {
     if (!nextPageToken || isLoading) return;
     setIsLoading(true);
+    setError(null);
     try {
       const { items, nextPageToken: token } =
         query !== ''
@@ -52,6 +58,7 @@ function App() {
       setNextPageToken(token);
     } catch (error) {
       console.error('Error loading more videos:', error);
+      setError('Sorry, there was an error loading more videos.');
     } finally {
       setIsLoading(false);
     }
@@ -62,9 +69,11 @@ function App() {
       <h1>YouTube Search</h1>
       <div>
         <SearchBar onSearch={handleSearch} />
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <VideoList
           videos={videos}
           isLoading={isLoading}
+          error={error}
           onLoadMore={handleLoadMore}
         />
       </div>
