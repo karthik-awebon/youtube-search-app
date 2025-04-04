@@ -12,23 +12,26 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        setError(null);
-        const { items, nextPageToken: token } = await getVideos();
-        setVideos(items);
-        setNextPageToken(token);
-      } catch (error) {
-        console.error('Error fetching videos:', error);
-        setError('Sorry, there was an error fetching videos.');
-      }
-    };
-
     fetchVideos();
   }, []);
 
+  const fetchVideos = async () => {
+    try {
+      setError(null);
+      const { items, nextPageToken: token } = await getVideos();
+      setVideos(items);
+      setNextPageToken(token);
+    } catch (error) {
+      console.error('Error fetching videos:', error);
+      setError('Sorry, there was an error fetching videos.');
+    }
+  };
+
   const handleSearch = useCallback(async (searchQuery) => {
-    if (!searchQuery) return;
+    if (!searchQuery) {
+      fetchVideos();
+      return;
+    }
     setQuery(searchQuery);
     setIsLoading(true);
     setVideos([]);
