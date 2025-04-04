@@ -42,7 +42,11 @@ function App() {
       setNextPageToken(token);
     } catch (error) {
       console.error('Error searching videos:', error);
-      setError('Sorry, there was an error searching for videos.');
+      if (error instanceof TypeError) {
+        setError(error.message);
+      } else {
+        setError('Sorry, there was an error searching for videos.');
+      }
     } finally {
       setIsLoading(false);
     }
