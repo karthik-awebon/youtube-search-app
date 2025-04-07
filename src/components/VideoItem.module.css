@@ -1,0 +1,29 @@
+.videoCard {
+    background-color: #282828;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.videoImageContainer {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.videoImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.videoInfo {
+    padding: 15px;
+}
+
+.videoTitle {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}

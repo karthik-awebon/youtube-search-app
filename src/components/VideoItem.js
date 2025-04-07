@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './VideoItem.module.css';
 
 function VideoItem({ video }) {
   const { snippet } = video;
@@ -6,23 +7,12 @@ function VideoItem({ video }) {
   const title = snippet.title;
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        marginBottom: '20px',
-        width: '80%',
-        maxWidth: '600px',
-        border: '1px solid #ccc',
-        padding: '10px',
-      }}
-    >
-      <img
-        src={imageUrl}
-        alt={title}
-        style={{ marginRight: '10px', width: '120px', height: '90px' }}
-      />
-      <div>
-        <h3>{title}</h3>
+    <div className={styles.videoCard}>
+      <div className={styles.videoImageContainer}>
+        <img src={imageUrl} alt={title} className={styles.videoImage} />
+      </div>
+      <div className={styles.videoInfo}>
+        <h2 className={styles.videoTitle}>{title}</h2>
       </div>
     </div>
   );

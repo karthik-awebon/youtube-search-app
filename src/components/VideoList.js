@@ -2,6 +2,7 @@ import React from 'react';
 import VideoItem from './VideoItem';
 import Loader from './Loader';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
+import styles from './VideoList.module.css';
 
 function VideoList({ videos, onLoadMore, isLoading, error }) {
   useInfiniteScroll(onLoadMore);
@@ -10,9 +11,7 @@ function VideoList({ videos, onLoadMore, isLoading, error }) {
   }
 
   return (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-    >
+    <div className={styles.videoList}>
       {videos.map((video) => (
         <VideoItem key={video.id.videoId} video={video} />
       ))}

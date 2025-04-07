@@ -11,7 +11,7 @@ function SearchBar({ onSearch }) {
     debouncedSearch(e.target.value);
   };
   return (
-    <div className={styles.searchWrapper}>
+    <div className={styles.searchBar}>
       <svg
         width='24'
         height='24'

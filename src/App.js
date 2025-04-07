@@ -3,6 +3,7 @@ import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
 import { searchVideos, getVideos } from './services/youtubeApi';
 import styles from './App.module.css';
+import './App.css';
 
 function App() {
   const [videos, setVideos] = useState([]);
@@ -72,19 +73,17 @@ function App() {
   }, [query, nextPageToken, isLoading]);
 
   return (
-    <div className={styles.container}>
-      <h1>YouTube Search</h1>
-      <div>
-        <SearchBar onSearch={handleSearch} />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <VideoList
-          videos={videos}
-          isLoading={isLoading}
-          error={error}
-          onLoadMore={handleLoadMore}
-        />
-      </div>
-    </div>
+    <>
+      <h1 className={styles.pageTitle}>Youtube Search</h1>
+      <SearchBar onSearch={handleSearch} />
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <VideoList
+        videos={videos}
+        isLoading={isLoading}
+        error={error}
+        onLoadMore={handleLoadMore}
+      />
+    </>
   );
 }
 
