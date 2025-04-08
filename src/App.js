@@ -75,7 +75,7 @@ function App() {
   return (
     <>
       <h1 className={styles.pageTitle}>Youtube Search</h1>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSearch={handleSearch} focus={true} />
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <VideoList
         videos={videos}
