@@ -11,12 +11,14 @@ function VideoList({ videos, onLoadMore, isLoading, error }) {
   }
 
   return (
-    <div className={styles.videoList}>
-      {videos.map((video) => (
-        <VideoItem key={video.id.videoId} video={video} />
-      ))}
+    <>
+      <div className={styles.videoList}>
+        {videos.map((video) => (
+          <VideoItem key={video.id.videoId} video={video} />
+        ))}
+      </div>
       {isLoading && <Loader />}
-    </div>
+    </>
   );
 }
 

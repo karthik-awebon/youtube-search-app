@@ -19,12 +19,15 @@ function App() {
   const fetchVideos = async () => {
     try {
       setError(null);
+      setIsLoading(true);
       const { items, nextPageToken: token } = await getVideos();
       setVideos(items);
       setNextPageToken(token);
     } catch (error) {
       console.error('Error fetching videos:', error);
       setError('Sorry, there was an error fetching videos.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
