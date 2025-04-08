@@ -11,7 +11,7 @@ function SearchBar({ onSearch, focus = false }) {
     if (searchInputRef.current && focus) {
       searchInputRef.current.focus();
     }
-  }, []);
+  }, [focus]);
 
   const onChangeHandler = (e) => {
     setSearchTerm(e.target.value);

@@ -64,7 +64,7 @@ function App() {
       const { items, nextPageToken: token } =
         query !== ''
           ? await searchVideos(query, nextPageToken)
-          : await getVideos(query, nextPageToken);
+          : await getVideos(nextPageToken);
       setVideos((prevVideos) => [...prevVideos, ...items]);
       setNextPageToken(token);
     } catch (error) {
