@@ -7,7 +7,7 @@ function VideoItem({ video }) {
   const title = snippet.title;
 
   return (
-    <div className={styles.videoCard}>
+    <div className={styles.videoCard} data-testid={`video-${video.id.videoId}`}>
       <div className={styles.videoImageContainer}>
         <img src={imageUrl} alt={title} className={styles.videoImage} />
       </div>

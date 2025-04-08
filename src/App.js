@@ -80,12 +80,13 @@ function App() {
       <h1 className={styles.pageTitle}>Youtube Search</h1>
       <SearchBar onSearch={handleSearch} focus={true} />
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <VideoList
-        videos={videos}
-        isLoading={isLoading}
-        error={error}
-        onLoadMore={handleLoadMore}
-      />
+      {!error && (
+        <VideoList
+          videos={videos}
+          isLoading={isLoading}
+          onLoadMore={handleLoadMore}
+        />
+      )}
     </>
   );
 }

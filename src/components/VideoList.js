@@ -4,19 +4,22 @@ import Loader from './Loader';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import styles from './VideoList.module.css';
 
-function VideoList({ videos, onLoadMore, isLoading, error }) {
+function VideoList({ videos = [], onLoadMore, isLoading }) {
   useInfiniteScroll(onLoadMore);
-  if (videos.length === 0 && !isLoading && !error) {
-    return <p>No videos found.</p>;
+  if (videos && videos.length === 0 && !isLoading) {
+    return <p data-testid='no-videos-found'>No videos found.</p>;
   }
 
   return (
     <>
-      <div className={styles.videoList}>
-        {videos.map((video) => (
-          <VideoItem key={video.id.videoId} video={video} />
-        ))}
-      </div>
+      {!isLoading && (
+        <div className={styles.videoList}>
+          {videos &&
+            videos.map((video) => (
+              <VideoItem key={video.id.videoId} video={video} />
+            ))}
+        </div>
+      )}
       {isLoading && <Loader />}
     </>
   );
