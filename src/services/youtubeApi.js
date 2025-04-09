@@ -12,7 +12,7 @@ export async function searchVideos(query, pageToken = '') {
 
   const url = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(
     sanitizedQuery
-  )}&maxResults=20&type=video&videoEmbeddable=true&videoSyndicated=true&key=${API_KEY}&type=video&pageToken=${pageToken}`;
+  )}&maxResults=10&type=video&videoEmbeddable=true&videoSyndicated=true&key=${API_KEY}&type=video&pageToken=${pageToken}`;
   const response = await fetch(url);
   if (!response.ok) {
     const errorDetails = await response.json();
@@ -26,7 +26,7 @@ export async function searchVideos(query, pageToken = '') {
 }
 
 export async function getVideos(pageToken = '') {
-  const url = `${BASE_URL}/videos?part=snippet,statistics&chart=mostpopular&maxResults=20&key=${API_KEY}`;
+  const url = `${BASE_URL}/videos?part=snippet,statistics&chart=mostpopular&maxResults=10&key=${API_KEY}&pageToken=${pageToken}`;
   const response = await fetch(url);
   if (!response.ok) {
     const errorDetails = await response.json();

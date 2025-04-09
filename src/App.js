@@ -58,8 +58,6 @@ function App() {
 
   const handleLoadMore = useCallback(async () => {
     if (!nextPageToken || isLoading) return;
-    setIsLoading(true);
-    setError(null);
     try {
       const { items, nextPageToken: token } =
         query !== ''

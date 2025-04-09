@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './VideoItem.module.css';
 
-function VideoItem({ video = {} }) {
+const VideoItem = React.memo(({ video = {} }) => {
   const { snippet = {} } = video;
   const imageUrl = snippet.thumbnails?.medium?.url || '';
   const title = snippet.title || 'No title available';
@@ -23,6 +23,6 @@ function VideoItem({ video = {} }) {
       </div>
     </div>
   );
-}
+});
 
 export default VideoItem;
