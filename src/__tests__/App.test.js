@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  waitFor,
-  act,
-  screen,
-  debug,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import { getVideos, searchVideos } from '../services/youtubeApi';
 import App from '../App';
 
