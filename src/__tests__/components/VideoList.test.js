@@ -54,7 +54,7 @@ describe('VideoList component', () => {
     const scrollHeight = 1000;
     const innerHeight = 500;
     const scrollY = 500;
-    const mockOnLoadMore = jest.fn();
+    const mockOnLoadMore = jest.fn().mockResolvedValue(true);
 
     render(
       <div style={{ height: `${scrollHeight}px` }}>

@@ -15,9 +15,9 @@ function VideoList({ videos = [], onLoadMore, isLoading }) {
       {!isLoading && (
         <div className={styles.videoList}>
           {videos &&
-            videos.map((video) => (
-              <VideoItem key={video.id.videoId} video={video} />
-            ))}
+            videos.map((video, index) => {
+              return <VideoItem key={index} video={video} />;
+            })}
         </div>
       )}
       {isLoading && <Loader />}

@@ -4,7 +4,7 @@ import styles from './SearchBar.module.css';
 
 function SearchBar({ onSearch, focus = false }) {
   const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearch = useDebounce(onSearch, 3000);
+  const debouncedSearch = useDebounce(onSearch, 2000);
   const searchInputRef = useRef(null);
 
   useEffect(() => {

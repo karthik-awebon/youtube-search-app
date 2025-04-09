@@ -23,7 +23,7 @@ describe('SearchBar Component', () => {
 
     expect(mockOnSearch).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(3000);
+    jest.advanceTimersByTime(2000);
     expect(mockOnSearch).toHaveBeenCalledWith('React');
   });
 
@@ -35,7 +35,7 @@ describe('SearchBar Component', () => {
 
     expect(mockOnSearch).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(3000);
+    jest.advanceTimersByTime(2000);
     expect(mockOnSearch).not.toHaveBeenCalled();
   });
 

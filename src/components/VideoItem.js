@@ -19,7 +19,7 @@ const VideoItem = React.memo(({ video = {} }) => {
         <img src={imageUrl} alt={title} className={styles.videoImage} />
       </div>
       <div className={styles.videoInfo}>
-        <h2 className={styles.videoTitle}>{title}</h2>
+        ({video.id?.videoId})<h2 className={styles.videoTitle}>{title}</h2>
       </div>
     </div>
   );

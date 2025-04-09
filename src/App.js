@@ -57,7 +57,7 @@ function App() {
   }, []);
 
   const handleLoadMore = useCallback(async () => {
-    if (!nextPageToken || isLoading) return;
+    if (!nextPageToken) return;
     try {
       const { items, nextPageToken: token } =
         query !== ''
@@ -69,10 +69,9 @@ function App() {
       console.error('Error loading more videos:', error);
       setError('Sorry, there was an error loading more videos.');
     } finally {
-      setIsLoading(false);
+      return true;
     }
   }, [query, nextPageToken, isLoading]);
-
   return (
     <>
       <h1 className={styles.pageTitle}>Youtube Search</h1>
