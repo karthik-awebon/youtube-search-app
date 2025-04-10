@@ -40,38 +40,38 @@ describe('useDebounce', () => {
     expect(mockFn).not.toHaveBeenCalled();
   });
 
-  //   test('resets the delay if called again before delay is reached', () => {
-  //     const debouncedFn = renderHook(() => useDebounce(mockFn, delay)).result
-  //       .current;
-  //     act(() => {
-  //       debouncedFn('test1');
-  //       jest.advanceTimersByTime(delay - 500);
-  //       debouncedFn('test2');
-  //     });
+  test('resets the delay if called again before delay is reached', () => {
+    const debouncedFn = renderHook(() => useDebounce(mockFn, delay)).result
+      .current;
+    act(() => {
+      debouncedFn('test1');
+      jest.advanceTimersByTime(200);
+      debouncedFn('test2');
+    });
 
-  //     act(() => {
-  //       jest.advanceTimersByTime(500);
-  //     });
+    act(() => {
+      jest.advanceTimersByTime(200);
+    });
 
-  //     expect(mockFn).not.toHaveBeenCalled();
+    expect(mockFn).not.toHaveBeenCalled();
 
-  //     act(() => {
-  //       jest.advanceTimersByTime(500);
-  //     });
+    act(() => {
+      jest.advanceTimersByTime(800);
+    });
 
-  //     expect(mockFn).toHaveBeenCalledWith('test2');
-  //   });
+    expect(mockFn).toHaveBeenCalledWith('test2');
+  });
 
-  //   test('calls the function with the latest arguments', () => {
-  //     const debouncedFn = renderHook(() => useDebounce(mockFn, delay)).result
-  //       .current;
+  test('calls the function with the latest arguments', () => {
+    const debouncedFn = renderHook(() => useDebounce(mockFn, delay)).result
+      .current;
 
-  //     act(() => {
-  //       debouncedFn('test1');
-  //       debouncedFn('test2');
-  //       jest.advanceTimersByTime(delay);
-  //     });
+    act(() => {
+      debouncedFn('test1');
+      debouncedFn('test2');
+      jest.advanceTimersByTime(delay);
+    });
 
-  //     expect(mockFn).toHaveBeenCalledWith('test2');
-  //   });
+    expect(mockFn).toHaveBeenCalledWith('test2');
+  });
 });

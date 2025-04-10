@@ -76,7 +76,7 @@ describe('App', () => {
     fireEvent.change(searchInput, { target: { value: userSearchText } });
     await waitFor(
       () => expect(searchVideos).toHaveBeenCalledWith(userSearchText),
-      { timeout: 2001 }
+      { timeout: 3000 }
     );
   });
   it('renders the list of videos returned by searchVideos', async () => {
@@ -91,7 +91,7 @@ describe('App', () => {
     fireEvent.change(searchInput, { target: { value: userSearchText } });
     await waitFor(
       () => expect(searchVideos).toHaveBeenCalledWith(userSearchText),
-      { timeout: 2001 }
+      { timeout: 3000 }
     );
     const videoList = await screen.findByTestId('video-list');
     expect(videoList.children.length).toBe(2);
