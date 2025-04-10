@@ -51,6 +51,7 @@ describe('VideoList component', () => {
     expect(noVideoElement).toBeInTheDocument();
   });
   it('calls onLoadMore when scroll reaches bottom of the page', async () => {
+    jest.useFakeTimers();
     const scrollHeight = 1000;
     const innerHeight = 500;
     const scrollY = 500;
@@ -65,7 +66,7 @@ describe('VideoList component', () => {
     global.innerHeight = innerHeight;
     global.scrollY = scrollY;
     global.dispatchEvent(new Event('scroll'));
-
+    jest.advanceTimersByTime(200);
     expect(mockOnLoadMore).toHaveBeenCalledTimes(1);
   });
   it('renders loader when isLoading is true', async () => {

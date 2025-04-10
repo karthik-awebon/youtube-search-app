@@ -1,20 +1,18 @@
 import { useEffect, useCallback, useState } from 'react';
 
+import useDebounce from './useDebounce';
+
 function useInfiniteScroll(onLoadMore) {
-  let isFetching = false;
+  const debouncedOnLoadMore = useDebounce(onLoadMore, 200);
+
   const handleScroll = useCallback(() => {
     if (
       window.innerHeight + window.scrollY >=
       document.body.offsetHeight - 500
     ) {
-      if (!isFetching) {
-        isFetching = true;
-        onLoadMore().finally(() => {
-          isFetching = false;
-        });
-      }
+      debouncedOnLoadMore();
     }
-  }, [onLoadMore]);
+  }, [debouncedOnLoadMore]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
