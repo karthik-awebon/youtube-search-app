@@ -1,4 +1,6 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import VideoItem from './VideoItem';
 import Loader from './Loader';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
@@ -15,8 +17,8 @@ function VideoList({ videos = [], onLoadMore, isLoading }) {
       {!isLoading && (
         <div className={styles.videoList} data-testid='video-list'>
           {videos &&
-            videos.map((video, index) => {
-              return <VideoItem key={index} video={video} />;
+            videos.map((video) => {
+              return <VideoItem key={uuidv4()} video={video} />;
             })}
         </div>
       )}

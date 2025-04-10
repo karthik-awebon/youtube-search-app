@@ -71,7 +71,7 @@ function App() {
     } finally {
       return true;
     }
-  }, [query, nextPageToken, isLoading]);
+  }, [query, nextPageToken]);
   return (
     <>
       <h1 className={styles.pageTitle}>Youtube Search</h1>

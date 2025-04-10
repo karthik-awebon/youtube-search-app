@@ -15,11 +15,26 @@ const VideoItem = React.memo(({ video = {} }) => {
       className={styles.videoCard}
       data-testid={`video-${video.id?.videoId || 'unknown'}`}
     >
-      <div className={styles.videoImageContainer}>
-        <img src={imageUrl} alt={title} className={styles.videoImage} />
-      </div>
+      <a
+        href={`https://www.youtube.com/watch?v=${video.id.videoId || video.id}`}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <div className={styles.videoImageContainer}>
+          <img src={imageUrl} alt={title} className={styles.videoImage} />
+        </div>
+      </a>
       <div className={styles.videoInfo}>
-        <h2 className={styles.videoTitle}>{title}</h2>
+        <a
+          className={styles.videoTitle}
+          href={`https://www.youtube.com/watch?v=${
+            video.id.videoId || video.id
+          }`}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          {title}
+        </a>
       </div>
     </div>
   );

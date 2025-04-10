@@ -1,5 +1,6 @@
 const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = process.env.REACT_APP_BASE_URL;
+const PAGE_SIZE = process.env.REACT_APP_PAGE_SIZE || 10;
 
 export async function searchVideos(query, pageToken = '') {
   if (typeof query !== 'string') {
@@ -12,7 +13,9 @@ export async function searchVideos(query, pageToken = '') {
 
   const url = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(
     sanitizedQuery
-  )}&maxResults=10&type=video&videoEmbeddable=true&videoSyndicated=true&key=${API_KEY}&type=video&pageToken=${pageToken}`;
+  )}&maxResults=${PAGE_SIZE}&type=video&key=${API_KEY}${
+    pageToken ? `&pageToken=${pageToken}` : ''
+  }`;
   const response = await fetch(url);
   if (!response.ok) {
     const errorDetails = await response.json();
@@ -26,7 +29,9 @@ export async function searchVideos(query, pageToken = '') {
 }
 
 export async function getVideos(pageToken = '') {
-  const url = `${BASE_URL}/videos?part=snippet,statistics&chart=mostpopular&maxResults=10&key=${API_KEY}&pageToken=${pageToken}`;
+  const url = `${BASE_URL}/videos?part=snippet&chart=mostpopular&maxResults=${PAGE_SIZE}&key=${API_KEY}${
+    pageToken ? `&pageToken=${pageToken}` : ''
+  }`;
   const response = await fetch(url);
   if (!response.ok) {
     const errorDetails = await response.json();
