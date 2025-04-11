@@ -29,7 +29,7 @@ export async function searchVideos(query, pageToken = '') {
 }
 
 export async function getVideos(pageToken = '') {
-  const url = `${BASE_URL}/videos?part=snippet&chart=mostpopular&maxResults=${PAGE_SIZE}&key=${API_KEY}${
+  const url = `${BASE_URL}/videos?part=snippet,statistics&chart=mostpopular&maxResults=${PAGE_SIZE}&key=${API_KEY}${
     pageToken ? `&pageToken=${pageToken}` : ''
   }`;
   const response = await fetch(url);

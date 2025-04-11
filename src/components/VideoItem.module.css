@@ -9,6 +9,7 @@
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
+    position: relative;
 }
 
 .videoImage {
@@ -36,4 +37,13 @@
 
 .videoTitle:hover {
     text-decoration: underline;
+}
+
+.viewCount {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 14px;
+    color: #f0f0f0;
+    padding: 5px;
 }
