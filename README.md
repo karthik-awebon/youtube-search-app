@@ -17,13 +17,13 @@ A YouTube video search application built with React.
 - Type in a search query in the search bar
 - Click on a video to view it on youtube
 
-## Technical details
+## Technical Details
 
-- The app uses the YouTube Data API to fetch video data
-- The app uses React hooks to manage state
-- The app uses React functional components to render the UI
-- The app uses a custom hook to handle the search input
-- The app uses a custom hook to handle the infinite scroll
+- Utilizes the YouTube Data API for fetching video data
+- Leverages React functional components for UI rendering
+- Implements a custom hook `useDebounce` to handle debouncing of search input
+- Implements a custom hook `useInfiniteScroll` to handle infinite scrolling and data fetching
+- Features key components such as `SearchBar`, `VideoList`, and `VideoItem` for structured and modular UI
 
 ## Screenshots
 
