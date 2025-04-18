@@ -1,8 +1,13 @@
 .videoCard {
-    background-color: #282828;
-    border-radius: 5px;
+    background-color: #3D3C3D;
+    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.videoFigure {
+    margin: 0;
+    padding: 15px;
 }
 
 .videoImageContainer {
@@ -17,6 +22,7 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .videoInfo {
@@ -25,6 +31,7 @@
 
 .videoTitle {
     font-size: 16px;
+    font-weight: bold;
     margin-top: 0;
     margin-bottom: 5px;
     color: #f0f0f0;

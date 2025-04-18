@@ -1,6 +1,6 @@
 const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-const PAGE_SIZE = process.env.REACT_APP_PAGE_SIZE || 10;
+const PAGE_SIZE = process.env.REACT_APP_PAGE_SIZE || 20;
 
 export async function searchVideos(query, pageToken = '') {
   if (typeof query !== 'string') {

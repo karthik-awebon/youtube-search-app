@@ -74,8 +74,12 @@ function App() {
   }, [query, nextPageToken]);
   return (
     <>
-      <h1 className={styles.pageTitle}>Youtube Search</h1>
-      <SearchBar onSearch={handleSearch} focus={true} />
+      <header className={styles.header}>
+        <h1 className={styles.pageTitle}>Youtube Search</h1>
+        <div className={styles.searchBar}>
+          <SearchBar onSearch={handleSearch} focus={true} />
+        </div>
+      </header>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {!error && (
         <VideoList

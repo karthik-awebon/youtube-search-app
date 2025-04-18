@@ -1,4 +1,20 @@
-.pageTitle {
-    margin-top: 20px;
-    text-align: center;
+.header {
+    background-color: #292829;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header .pageTitle {
+    text-align: left;
+    margin: 0px 20px;
+    flex: 1;
+    font-size: 1.5rem
+}
+
+.header .searchBar {
+    text-align: right;
+    margin: 0px 20px;
+    flex: 1;
 }

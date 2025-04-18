@@ -14,35 +14,39 @@ const VideoItem = React.memo(({ video = {} }) => {
   }
 
   return (
-    <div
+    <li
       className={styles.videoCard}
-      data-testid={`video-${video.id?.videoId || 'unknown'}`}
+      data-testid={`video-${video.id?.videoId || video.id || 'unknown'}`}
     >
-      <div className={styles.videoImageContainer}>
-        {viewCount && <div className={styles.viewCount}>{viewCount} views</div>}
-        <a
-          href={`https://www.youtube.com/watch?v=${
-            video.id.videoId || video.id
-          }`}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <img src={imageUrl} alt={title} className={styles.videoImage} />
-        </a>
-      </div>
-      <div className={styles.videoInfo}>
-        <a
-          className={styles.videoTitle}
-          href={`https://www.youtube.com/watch?v=${
-            video.id.videoId || video.id
-          }`}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          {title}
-        </a>
-      </div>
-    </div>
+      <figure className={styles.videoFigure}>
+        <div className={styles.videoImageContainer}>
+          {viewCount && (
+            <div className={styles.viewCount}>{viewCount} views</div>
+          )}
+          <a
+            href={`https://www.youtube.com/watch?v=${
+              video.id.videoId || video.id
+            }`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <img src={imageUrl} alt={title} className={styles.videoImage} />
+          </a>
+        </div>
+        <figcaption className={styles.videoInfo}>
+          <a
+            className={styles.videoTitle}
+            href={`https://www.youtube.com/watch?v=${
+              video.id.videoId || video.id
+            }`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {title}
+          </a>
+        </figcaption>
+      </figure>
+    </li>
   );
 });
 

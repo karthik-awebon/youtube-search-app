@@ -1,16 +1,14 @@
 .searchBar {
-    width: 90%;
-    max-width: 600px;
     margin: 20px auto;
     padding: 10px;
     display: flex;
     border-radius: 5px;
-    background-color: #282828;
+    background-color: #390E14;
     border: 1px solid #383838;
 }
 
 .searchBar svg {
-    background-color: #4c4c4c;
+    background-color: #292829;
     color: #f0f0f0;
     border: none;
     padding: 10px 15px;

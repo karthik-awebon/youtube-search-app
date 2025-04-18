@@ -38,6 +38,7 @@ function SearchBar({ onSearch, focus = false }) {
         value={searchTerm}
         onChange={onChangeHandler}
         data-testid='search-bar'
+        aria-label='Search Videos'
       />
     </div>
   );

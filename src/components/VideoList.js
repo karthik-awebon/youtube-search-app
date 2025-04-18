@@ -15,12 +15,12 @@ function VideoList({ videos = [], onLoadMore, isLoading }) {
   return (
     <>
       {!isLoading && (
-        <div className={styles.videoList} data-testid='video-list'>
+        <ul className={styles.videoList} data-testid='video-list'>
           {videos &&
             videos.map((video) => {
               return <VideoItem key={uuidv4()} video={video} />;
             })}
-        </div>
+        </ul>
       )}
       {isLoading && <Loader />}
     </>
