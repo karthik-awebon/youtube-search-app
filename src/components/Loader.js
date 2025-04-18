@@ -57,6 +57,24 @@ function Loader() {
           <figcaption className={styles.skeletonTitle}></figcaption>
         </figure>
       </li>
+      <li className={styles.skeletonCard}>
+        <figure className={styles.skeletonFigure}>
+          <div className={styles.skeletonImage}></div>
+          <figcaption className={styles.skeletonTitle}></figcaption>
+        </figure>
+      </li>
+      <li className={styles.skeletonCard}>
+        <figure className={styles.skeletonFigure}>
+          <div className={styles.skeletonImage}></div>
+          <figcaption className={styles.skeletonTitle}></figcaption>
+        </figure>
+      </li>
+      <li className={styles.skeletonCard}>
+        <figure className={styles.skeletonFigure}>
+          <div className={styles.skeletonImage}></div>
+          <figcaption className={styles.skeletonTitle}></figcaption>
+        </figure>
+      </li>
     </ul>
   );
 }

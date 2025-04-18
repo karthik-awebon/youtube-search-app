@@ -3,7 +3,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
 .header .pageTitle {
@@ -17,4 +16,10 @@
     text-align: right;
     margin: 0px 20px;
     flex: 1;
+}
+
+@media (min-width: 768px) {
+    .header {
+        width: 100%;
+    }
 }
