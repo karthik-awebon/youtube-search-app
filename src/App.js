@@ -31,7 +31,7 @@ function App() {
     }
   };
 
-  const handleSearch = useCallback(async (searchQuery) => {
+  const handleSearch = async (searchQuery) => {
     if (!searchQuery) {
       fetchVideos();
       return;
@@ -54,9 +54,9 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  };
 
-  const handleLoadMore = useCallback(async () => {
+  const handleLoadMore = async () => {
     if (!nextPageToken) return;
     try {
       const { items, nextPageToken: token } =
@@ -71,7 +71,7 @@ function App() {
     } finally {
       return true;
     }
-  }, [query, nextPageToken]);
+  };
   return (
     <>
       <header className={styles.header}>
